@@ -1,1 +1,0 @@
-# Smart-Personal-Cart-AIoT
