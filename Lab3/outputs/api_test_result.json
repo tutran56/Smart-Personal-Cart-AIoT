@@ -1,0 +1,80 @@
+{
+  "health": {
+    "status": "ok",
+    "model_loaded": true,
+    "model_bundle_path": "C:\\Users\\Lojc1\\Downloads\\TrienKhaiUngDung\\lab3_aiot_anomaly_event_intelligence_v3_code\\lab3_aiot_anomaly_event_intelligence_v3\\models\\anomaly_model_bundle_iforest_v2.joblib"
+  },
+  "model_info": {
+    "model_loaded": true,
+    "model_name": "IsolationForest anomaly detector",
+    "model_version": "iforest_v2",
+    "input": "history of telemetry points with timestamp and value",
+    "output": "anomaly_score, is_anomaly, threshold_used, event_type, severity, decision",
+    "threshold": 0.6091,
+    "feature_columns": [
+      "value",
+      "hour",
+      "dayofweek",
+      "rolling_mean_12",
+      "rolling_std_12",
+      "rolling_mean_36",
+      "delta_1",
+      "delta_3",
+      "zscore_rolling",
+      "is_stuck_candidate"
+    ],
+    "metrics": {
+      "precision": 0.2401,
+      "recall": 0.5675,
+      "f1_score": 0.3374,
+      "confusion_matrix": [
+        [
+          1529,
+          652
+        ],
+        [
+          157,
+          206
+        ]
+      ],
+      "tn": 1529,
+      "fp": 652,
+      "fn": 157,
+      "tp": 206,
+      "threshold": 0.6091,
+      "score_min_train": 0.395053,
+      "score_max_train": 0.671542,
+      "train_rows": 4723,
+      "train_normal_rows": 4360,
+      "test_rows": 2544,
+      "model_type": "IsolationForest",
+      "model_version": "iforest_v2",
+      "threshold_policy": "Threshold lấy từ phân bố anomaly_score của train_normal, không lấy từ test.",
+      "note": "Precision/Recall/F1 chỉ có ý nghĩa khi label anomaly có sẵn."
+    }
+  },
+  "detect_anomaly": {
+    "model_output": {
+      "raw_score": 0.54529,
+      "anomaly_score": 0.5434,
+      "threshold_used": 0.6091,
+      "is_anomaly": false,
+      "model_version": "iforest_v2"
+    },
+    "event": {
+      "event_type": "NORMAL_TELEMETRY",
+      "device_id": "nab_office_temp_sensor_01",
+      "timestamp": "2014-05-28 15:00:00",
+      "value": 72.58408858,
+      "severity": "LOW",
+      "decision": "NO_ALERT",
+      "explanation": "telemetry is within learned normal operating pattern",
+      "safety_note": "Không tự động điều khiển thiết bị khi anomaly cao; cần xác nhận hoặc rule an toàn."
+    },
+    "api_check": {
+      "latency_ms": 53.54,
+      "input_points": 40,
+      "warnings": []
+    }
+  }
+}
